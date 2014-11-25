@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+  </head>
+  <body ng-app="starter">
+
+    <ion-pane>
+
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">Airport Delay and Weather</h1>
+      </ion-header-bar>
+
+      <ion-content style="text-align: center;">
+        <h1>Select an Airport</h1>
+        <div class="list">
+          <label class="item item-input item-select">
+              <div class="input-label">
+                Airport
+              </div>
+            <select id="airportList" onChange="optionChange()">
+              <option value="ATL">ATL</option>
+              <option value="BNA">BNA</option>
+              <option value="BOS">BOS</option>
+              <option value="BWI">BWI</option>
+              <option value="CLE">CLE</option>
+              <option value="CLT">CLT</option>
+              <option value="CVG">CVG</option>
+              <option value="DCA">DCA</option>
+              <option value="DEN">DEN</option>
+              <option value="DFW">DFW</option>
+              <option value="DTW">DTW</option>
+              <option value="EWR">EWR</option>
+              <option value="FLL">FLL</option>
+              <option value="IAD">IAD</option>
+              <option value="IAH">IAH</option>
+              <option value="IND">IND</option>
+              <option value="JFK">JFK</option>
+              <option value="LAS">LAS</option>
+              <option value="LAX">LAX</option>
+              <option value="LGA">LGA</option>
+              <option value="MCI">MCI</option>
+              <option value="MCO">MCO</option>
+              <option value="MDW">MDW</option>
+              <option value="MEM">MEM</option>
+              <option value="MIA">MIA</option>
+              <option value="MSP">MSP</option>
+              <option value="ORD">ORD</option>
+              <option value="PDX" selected>PDX</option>
+              <option value="PHL">PHL</option>
+              <option value="PHX">PHX</option>
+              <option value="PIT">PIT</option>
+              <option value="RDU">RDU</option>
+              <option value="SAN">SAN</option>
+              <option value="SEA">SEA</option>
+              <option value="SFO">SFO</option>
+              <option value="SJC">SJC</option>
+              <option value="SLC">SLC</option>
+              <option value="STL">STL</option>
+              <option value="TEB">TEB</option>
+              <option value="TPA">TPA</option>
+            </select>
+          </label>
+        </div>
+
+
+        <p id="airportInfo"></p>
+      </ion-content>
+
+    </ion-pane>
+
+    <!-- Firebase -->
+    <script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+
+  </body>
+</html>
