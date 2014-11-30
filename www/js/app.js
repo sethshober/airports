@@ -28,6 +28,27 @@ var airportCodes = [];
 var initialAirport = airportList.options[airportList.selectedIndex].value;
 
 
+ // LOCALSTORAGE
+// Wait for device API libraries to load
+document.addEventListener("deviceready", onDeviceReady, false);
+
+// device APIs are available
+
+function onDeviceReady() {
+    window.localStorage.setItem("key", "value");
+    
+    var keyname = window.localStorage.key(0);
+    // keyname is now equal to "key"
+    var value = window.localStorage.getItem("key");
+    // value is now equal to "value"
+    console.log(keyname);
+    console.log(value);
+    // window.localStorage.removeItem("key");
+    // window.localStorage.setItem("key2", "value2");
+    // window.localStorage.clear();
+    // localStorage is now empty
+}
+
 
 // EXAMPLE OF GRABBING SINGLE AIRPORT DATA
 // airportsRef.child("SFO").on("value", airportInfo);
@@ -87,14 +108,54 @@ function optionChange() {
   console.log(airportSelect);
 }
 
-// GRAB AIPORT INFO AND WEATHER FROM PUBLIC DATA SET
+// GRAB AIPORT INFO AND WEATHER FROM PUBLIC DATA SET AND UPDATE DOM
 function airportInfo(snapshot) {
   var airport = snapshot.val();
-  console.log("Delay: " + airport.delay + " reason: " + airport.status.reason);
-
   var temp = airport.weather.temp;
   var n = temp.indexOf("F");
   var tempF = temp.substring(0, n);
   var airportInfo = document.getElementById("airportInfo");
-  airportInfo.innerHTML = airport.name + " Airport - " + airport.IATA + "<br/>Location: " + airport.city + ", " + airport.state + "<br/>Delay: " + airport.delay + "<br/>Reason: " + airport.status.reason + "<br/>Weather in " + airport.city + ": " + tempF + " &deg;F " + airport.weather.weather;
+  var airportTag = document.getElementById('airportTag');
+  var weather = document.getElementById('weather');
+  var delay = document.getElementById('delay');
+  
+  console.log(snapshot.val());
+
+
+  //$("#weather").attr("data-icon",icons[]);
+
+
+
+  airportTag.innerHTML = airport.name + " Airport - " + airport.IATA;
+  
+  weather.innerHTML = Math.round(tempF) + "&deg;";
+  
+  if(airport.delay === false) {
+    delay.innerHTML = "There are no known delays for this airport.";
+  } else {
+    delay.innerHTML = "Delays are occurring due to " + airport.status.reason + ".";
+  }
+
+  //airportInfo.innerHTML = airport.name + " Airport - " + airport.IATA + "<br/>Location: " + airport.city + ", " + airport.state + "<br/>Delay: " + airport.delay + "<br/>Reason: " + airport.status.reason + "<br/>Weather in " + airport.city + ": " + tempF + " &deg;F " + airport.weather.weather;
 }
+
+
+
+
+// ICONS OBJECT FOR WEATHER (NOT ACTUALLY WORKING...JUST PLACEHOLDER)
+var icons = { "clear-day" : "B", 
+            "clear-night" : "C", 
+            "rain" : "R", 
+            "snow" : "G", 
+            "sleet" : "X", 
+            "wind" : "S", 
+            "fog" :"N", 
+            "cloudy" : "Y",
+            "partly-cloudy-day" : "H", 
+            "partly-cloudy-night" : "I"
+          };
+
+
+
+
+

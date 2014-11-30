@@ -27,13 +27,14 @@
         <h1 class="title">Airport Delay and Weather</h1>
       </ion-header-bar>
 
-      <ion-content style="text-align: center;">
-        <h1>Select an Airport</h1>
+      <ion-content>
+
         <div class="list">
           <label class="item item-input item-select">
               <div class="input-label">
                 Airport
               </div>
+            <!-- ideally this will be dynamically populated -->
             <select id="airportList" onChange="optionChange()">
               <option value="ATL">ATL</option>
               <option value="BNA">BNA</option>
@@ -79,8 +80,13 @@
           </label>
         </div>
 
+        <div>
+          <h2 id="airportTag"></h2>
+          <h3 id="weather" class="icon" data-icon="H"></h3>
+          <p id="delay"><p>
+          <p id="airportInfo"></p>
+        </div>
 
-        <p id="airportInfo"></p>
       </ion-content>
 
     </ion-pane>

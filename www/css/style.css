@@ -1,1 +1,36 @@
-/* Empty. Add your own CSS if you like */
+@font-face {
+    font-family: 'MeteoconsRegular';
+    src: url('meteocons-webfont.eot');
+    src: url('meteocons-webfont.eot?#iefix') format('embedded-opentype'),
+         url('meteocons-webfont.woff') format('woff'),
+         url('meteocons-webfont.ttf') format('truetype'),
+         url('meteocons-webfont.svg#MeteoconsRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+	font-family: Helvetica, sans-serif;
+}
+
+#airportTag {
+	text-align: center;
+}
+
+#weather {
+	font-size: 3em;
+	margin: 0.5em auto;
+	text-align: center;
+}
+
+.icon:before {
+	font-family: 'MeteoconsRegular';
+	content: attr(data-icon);
+	font-size: 1.25em;
+	padding-right: .25em;
+}
+
+#delay {
+	text-align: center;
+}
