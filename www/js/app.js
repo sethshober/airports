@@ -19,6 +19,8 @@ angular.module('starter', ['ionic'])
 })
 
 
+
+
 // CREATE FIREBASE REFERENCE FOR AIRPORT DELAY OPEN DATA SET
 var airportsRef = new Firebase("https://publicdata-airports.firebaseio.com/");
 

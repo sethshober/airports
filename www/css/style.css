@@ -18,13 +18,15 @@ body {
 	text-align: center;
 }
 
+
+
 #weather {
 	font-size: 3em;
 	margin: 0.5em auto;
 	text-align: center;
 }
 
-.icon:before {
+.weather-icon::before {
 	font-family: 'MeteoconsRegular';
 	content: attr(data-icon);
 	font-size: 1.25em;
@@ -34,3 +36,10 @@ body {
 #delay {
 	text-align: center;
 }
+
+	#delay::before {
+		content: "\f21b";
+		font-family: 'Ionicons';
+		color: green;
+		padding-right: 0.5em;
+	}
