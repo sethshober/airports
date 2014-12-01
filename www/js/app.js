@@ -1,8 +1,5 @@
 // FIRST TEST WITH FIREBASE...USING A PUBLIC DATA SET THEY HAVE ON AIRPORTS...IONIC TEST AS WELL
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
 var air = angular.module('starter', ['ionic'])
 
 .run(function($ionicPlatform) {
@@ -19,10 +16,19 @@ var air = angular.module('starter', ['ionic'])
 
 });
 
+
+//working on dynamic page header
 // air.controller('airSelectController', function($scope) {
 //   $scope.airTag = airportSelect;
 // })
 
+
+// example of grabbing airport data of child SFO (San Francisco)
+// airportsRef.child("SFO").on("value", delayInfo);
+// function delayInfo(snapshot) {
+//   var airport = snapshot.val();
+//   console.log("Delay: " + airport.delay + " reason: " + airport.status.reason);
+// }
 
 
 // CREATE FIREBASE REFERENCE FOR AIRPORT DELAY OPEN DATA SET
@@ -34,7 +40,7 @@ var airportCodes = [];
 var airportSelect = airportList.options[airportList.selectedIndex].value;
 
 
- // LOCALSTORAGE
+// LOCALSTORAGE
 // Wait for device API libraries to load
 document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -56,22 +62,12 @@ function onDeviceReady() {
 }
 
 
-// EXAMPLE OF GRABBING SINGLE AIRPORT DATA
-// airportsRef.child("SFO").on("value", airportInfo);
-// function airportInfo(snapshot) {
-//   var airport = snapshot.val();
-//   console.log("Delay: " + airport.delay + " reason: " + airport.status.reason);
-// }
-
-
-
-
-// GRAB A SINGLE SNAPSHOT
+// GRAB A SINGLE SNAPSHOT, WHICH IS DATA FROM FIREBASE
 airportsRef.once('value', function(snapshot){
-  // for each object (airport)
+    // for each object (airport)
     snapshot.forEach(function(child){
     airportObj = child.val();
-    // create array of airport codes
+    // create array of airport codes (with thought to use for dynamically adding to Select)
     if(typeof airportObj.IATA == 'string'){
       airportCodes.push(airportObj.IATA);  
     }
@@ -104,47 +100,49 @@ airportsRef.child(airportSelect).on("value", airportInfo);
 
 // RUNS ON SELECT OPTION CHANGE, GRABS SELECTED AIRPORT DATA, WILL PERSIST AND AUTOMATICALLY UPDATE ANY CHANGES 
 function optionChange() {
-  //var airportList = document.getElementById("airportList");
+
   airportSelect = airportList.options[airportList.selectedIndex].value;
 
-  console.log(airportSelect);
+  console.log(airportSelect);//testing
 
   airportsRef.child(airportSelect).on("value", airportInfo);
 
-  console.log(airportSelect);
+  console.log(airportSelect);//testing
 }
 
 // GRAB AIPORT INFO AND WEATHER FROM PUBLIC DATA SET AND UPDATE DOM
 function airportInfo(snapshot) {
-  var airport = snapshot.val();
+  var airport = snapshot.val();//val will give nice object of child in snapshot data
   var temp = airport.weather.temp;
+
+  //find index value of F from string of farenheit and celcius numbers
   var n = temp.indexOf("F");
+  //starting at the beginning of C & F string take content up to where there is an F (this will grab the farenheit number)
   var tempF = temp.substring(0, n);
+
   var airportInfo = document.getElementById("airportInfo");
   var airportTag = document.getElementById('airportTag');
   var weather = document.getElementById('weather');
   var delay = document.getElementById('delay');
   
-  console.log(snapshot.val());
-
-
-  //$("#weather").attr("data-icon",icons[]);
-
-
+  console.log(snapshot.val());//testing
 
   airportTag.innerHTML = airport.IATA;
   
   weather.innerHTML = Math.round(tempF) + "&deg;";
   
+  //show delay status and info
   if(airport.delay === false) {
     delay.innerHTML = "Things are running smoothly. You're good to go.";
-    delay.classList.add('delay-green');
+    //set correct class as on or off
+    delay.classList.toggle('delay-green', true);
+    delay.classList.toggle('delay-red', false);
   } else {
     delay.innerHTML = "Delays are occurring due to " + airport.status.reason + ".";
-    delay.classList.add('delay-red');
+    //set correct class as on or off
+    delay.classList.toggle('delay-red', true);
+    delay.classList.toggle('delay-green', false);
   }
-
-  //airportInfo.innerHTML = airport.name + " Airport - " + airport.IATA + "<br/>Location: " + airport.city + ", " + airport.state + "<br/>Delay: " + airport.delay + "<br/>Reason: " + airport.status.reason + "<br/>Weather in " + airport.city + ": " + tempF + " &deg;F " + airport.weather.weather;
 }
 
 
@@ -162,6 +160,8 @@ var icons = { "clear-day" : "B",
             "partly-cloudy-day" : "H", 
             "partly-cloudy-night" : "I"
           };
+
+ //$("#weather").attr("data-icon",icons[]);
 
 
 
