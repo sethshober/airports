@@ -128,12 +128,12 @@ function airportInfo(snapshot) {
 
 
 
-  airportTag.innerHTML = airport.name + " Airport - " + airport.IATA;
+  airportTag.innerHTML = airport.name + " Airport - " + "<span>" + airport.IATA + "</span>";
   
   weather.innerHTML = Math.round(tempF) + "&deg;";
   
   if(airport.delay === false) {
-    delay.innerHTML = "There are no known delays for this airport.";
+    delay.innerHTML = "Things are running smoothly. You're good to go.";
   } else {
     delay.innerHTML = "Delays are occurring due to " + airport.status.reason + ".";
   }

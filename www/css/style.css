@@ -14,32 +14,70 @@ body {
 	font-family: Helvetica, sans-serif;
 }
 
-#airportTag {
-	text-align: center;
+#body-wrap {
+	padding: 0.75em;
 }
 
+#airportTag {
+	font-size: 3em;
+	font-weight: 300;
+	color: #fff;
+	text-align: center;
+	text-shadow: 0px 0px 0.25px #666;
+}
+
+	#airportTag span {
+		font-weight: 400;
+	}
 
 
 #weather {
-	font-size: 3em;
+	font-weight: 300;
+	color: #fff;
+	font-size: 4em;
 	margin: 0.5em auto;
 	text-align: center;
+	text-shadow: 0px 0px 0.25px #666;
 }
 
 .weather-icon::before {
 	font-family: 'MeteoconsRegular';
+	color: #fff;
 	content: attr(data-icon);
 	font-size: 1.25em;
 	padding-right: .25em;
 }
 
 #delay {
+	font-weight: 300;
+	font-size: 1.5em;
+	color: #fff;
 	text-align: center;
+	text-shadow: 0px 0px 0.25px #666;
 }
 
 	#delay::before {
 		content: "\f21b";
 		font-family: 'Ionicons';
 		color: green;
-		padding-right: 0.5em;
+		padding-right: 0.6em;
+		text-shadow: 0px 0px 8px lightgreen;
 	}
+
+.bg-air {
+	width: 100%;
+	height: 100%;
+	background: url(../img/pdxairport.jpg) #fff no-repeat center center;
+	background-size: cover;
+}
+
+	.bg-air::before {
+    	content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-image: linear-gradient(to bottom,white,black);
+		opacity: 0.8;
+  	}
