@@ -19,8 +19,8 @@ body {
 }
 
 #airportTag {
-	font-size: 3em;
-	font-weight: 300;
+	font-size: 6em;
+	font-weight: 400;
 	color: #fff;
 	text-align: center;
 	text-shadow: 0px 0px 0.25px #666;
@@ -56,12 +56,28 @@ body {
 	text-shadow: 0px 0px 0.25px #666;
 }
 
-	#delay::before {
+/*	#delay::before {
 		content: "\f21b";
 		font-family: 'Ionicons';
 		color: green;
 		padding-right: 0.6em;
 		text-shadow: 0px 0px 8px lightgreen;
+	}*/
+
+.delay-green::before {
+		content: "\f21b";
+		font-family: 'Ionicons';
+		color: lightgreen;
+		padding-right: 0.6em;
+		text-shadow: 0px 0px 8px green;
+	}
+	
+.delay-red::before {
+		content: "\f21b";
+		font-family: 'Ionicons';
+		color: tomato;
+		padding-right: 0.6em;
+		text-shadow: 0px 0px 8px red;
 	}
 
 .bg-air {

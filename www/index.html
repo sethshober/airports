@@ -25,15 +25,10 @@
 
     <ion-pane>
 
-      <ion-header-bar class="bar-stable">
-        <div class="bar bar-header">
+      <ion-header-bar class="bar bar-header bar-light">
           <button class="button button-icon icon ion-navicon"></button>
-          <!-- <div class="h1 title">Airport Delay and Weather</div> -->
+          <h1 class="title">Airport Delays and Weather</h1>
           <!-- <button class="button button-clear button-positive">Edit</button> -->
-        </div>
-<!--         <div class="bar bar-header bar-light">
-          <h1 class="title">Airport Delay and Weather</h1>
-        </div> -->
       </ion-header-bar>
 
       <ion-content class="bg-air" id="body-wrap">
@@ -44,7 +39,7 @@
                 Airport
               </div>
             <!-- ideally this will be dynamically populated -->
-            <select id="airportList" onChange="optionChange()">
+            <select id="airportList" onchange="optionChange()">
               <option value="ATL">ATL</option>
               <option value="BNA">BNA</option>
               <option value="BOS">BOS</option>
